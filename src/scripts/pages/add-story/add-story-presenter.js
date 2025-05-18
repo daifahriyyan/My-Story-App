@@ -11,7 +11,6 @@ export default class AddStoryPresenter {
     // const input = this.#view.inputStory();
     const token = sessionStorage.getItem('token');
 
-    console.log(input)
     if (token) {
       await this.#model.addStory(input, token);
     } else {

@@ -1,5 +1,8 @@
 import routes from '../routes/routes';
 import { getActiveRoute } from '../routes/url-parser';
+import { generateSubscribeButtonTemplate, generateUnsubscribeButtonTemplate } from '../templates';
+import { isServiceWorkerAvailable } from '../utils';
+import { subscribe, unsubscribe, isCurrentPushSubscriptionAvailable } from '../utils/notification-helper';
 
 class App {
   #content = null;
@@ -35,6 +38,32 @@ class App {
     });
   }
 
+  async #setupPushNotification() {
+    const pushNotificationTools = document.getElementById('notification-tools');
+    const isSubscribed = await isCurrentPushSubscriptionAvailable();
+    const auth = sessionStorage.getItem('token');
+
+    if (isSubscribed && auth) {
+      pushNotificationTools.innerHTML = generateUnsubscribeButtonTemplate();
+      document.getElementById('unsubscribe-button').addEventListener('click', () => {
+        unsubscribe().finally(() => {
+          this.#setupPushNotification();
+        });
+      });
+
+      return;
+    }
+
+    if (auth) {
+      pushNotificationTools.innerHTML = generateSubscribeButtonTemplate();
+      document.getElementById('subscribe-button').addEventListener('click', () => {
+        subscribe().finally(() => {
+          this.#setupPushNotification()
+        });
+      })
+    }
+  }
+
   async renderPage() {
     const url = getActiveRoute();
     const page = routes[url];
@@ -51,6 +80,10 @@ class App {
       this.#content.innerHTML = await page.render();
       await page.afterRender();
     });
+
+    if (isServiceWorkerAvailable()) {
+      this.#setupPushNotification();
+    }
 
     const loginBtn = document.querySelector('#login-btn');
     if (sessionStorage.getItem('token')) {

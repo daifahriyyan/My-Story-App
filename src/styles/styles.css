@@ -467,3 +467,9 @@ footer {
   text-align: center;
   padding: 15px;
 }
+
+#notification-tools button {
+  padding: 7.5px;
+  cursor: pointer;
+  border-radius: 5px;
+}

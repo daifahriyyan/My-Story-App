@@ -2,6 +2,7 @@ import CONFIG from '../config';
 
 const ENDPOINTS = {
   ENDPOINT: `${CONFIG.BASE_URL}`,
+  SUBSCRIBE: `${CONFIG.BASE_URL}/notifications/subscribe`
 };
 
 export default class getData {
@@ -50,13 +51,26 @@ export default class getData {
 
       await fetchResponse.json();
 
+      // Memanggil Function Notification
+      this.showLocalNotification('Story Berhasil dibuat!!', input.description)
+
       return window.location.href = '#/stories';
     } catch (error) {
       console.error('Error:', error);
       alert('Terjadi kesalahan saat menambahkan cerita tamu');
       return null;
     }
+  }
 
+  // Mentrigger Push Notification
+  async showLocalNotification(title, body) {
+    if (Notification.permission === 'granted') {
+      navigator.serviceWorker.getRegistration().then(reg => {
+        reg.showNotification(title, {
+          body: `Anda telah membuat story baru dengan deskripsi: ${body}`
+        });
+      });
+    }
   }
 
   async addGuestStory(input) {
@@ -128,5 +142,63 @@ export default class getData {
 
   async logout() {
     sessionStorage.removeItem('token');
+  }
+}
+
+export async function subscribePushNotification({ endpoint, keys: { p256dh, auth } }) {
+  const accessToken = getAccessToken();
+  const data = JSON.stringify({
+    endpoint,
+    keys: { p256dh, auth },
+  });
+
+  const fetchResponse = await fetch(ENDPOINTS.SUBSCRIBE, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`,
+    },
+    body: data,
+  });
+  const json = await fetchResponse.json();
+
+  return {
+    ...json,
+    ok: fetchResponse.ok,
+  };
+}
+
+export async function unsubscribePushNotification({ endpoint }) {
+  const accessToken = getAccessToken();
+  const data = JSON.stringify({ endpoint });
+
+  const fetchResponse = await fetch(ENDPOINTS.SUBSCRIBE, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`,
+    },
+    body: data,
+  });
+  const json = await fetchResponse.json();
+
+  return {
+    ...json,
+    ok: fetchResponse.ok,
+  };
+}
+
+function getAccessToken() {
+  try {
+    const accessToken = sessionStorage.getItem('token');
+
+    if (accessToken === 'null' || accessToken === 'undefined') {
+      return null;
+    }
+
+    return accessToken;
+  } catch (error) {
+    console.error('getAccessToken: error:', error);
+    return null;
   }
 }
