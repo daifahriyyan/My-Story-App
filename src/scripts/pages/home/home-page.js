@@ -11,4 +11,8 @@ export default class HomePage {
       </section>
     `;
   }
+
+  async afterRender() {
+
+  }
 }

@@ -3,6 +3,7 @@ import { getActiveRoute } from '../routes/url-parser';
 import { generateSubscribeButtonTemplate, generateUnsubscribeButtonTemplate } from '../templates';
 import { isServiceWorkerAvailable } from '../utils';
 import { subscribe, unsubscribe, isCurrentPushSubscriptionAvailable } from '../utils/notification-helper';
+import NotFoundPage from './not-found-page';
 
 class App {
   #content = null;
@@ -66,8 +67,9 @@ class App {
 
   async renderPage() {
     const url = getActiveRoute();
-    const page = routes[url];
+    const route = routes[url];
 
+    const page = route ?? new NotFoundPage();
 
     if (!document.startViewTransition) {
       this.#content.innerHTML = await page.render();

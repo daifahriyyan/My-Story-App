@@ -1,3 +1,5 @@
+import { addBookmark } from "../../data/database";
+
 export default class DetailStoryPresenter {
   #storyId;
   #model;
@@ -14,5 +16,13 @@ export default class DetailStoryPresenter {
 
     await this.#view.initialMap(item.story);
     this.#view.showStory(item.story);
+  }
+
+  async addBookmark() {
+    const item = await this.#model.getStoryDetail(this.#storyId);
+
+    document.getElementById('add-bookmark').addEventListener('click', async () => {
+      addBookmark(item.story);
+    })
   }
 }

@@ -182,13 +182,15 @@ header {
   }
 }
 
-#stories {
+#stories,
+#bookmark-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 15px;
 }
 
-#stories .card {
+#stories .card,
+#bookmark-list .card {
   display: grid;
   background-color: rgb(235, 246, 252);
   border: 1px solid black;
@@ -198,7 +200,8 @@ header {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#stories img {
+#stories img,
+#bookmark-list img {
   width: 100%;
   object-fit: cover;
   border-radius: 10px;
@@ -206,21 +209,25 @@ header {
 }
 
 #stories h2,
-h3 {
+h3,
+#bookmark-list h2 {
   text-align: center;
   padding-top: 10px;
 }
 
-#stories a {
+#stories a,
+#bookmark-list a {
   text-decoration: none;
   color: black;
 }
 
-#stories article {
+#stories article,
+#bookmark-list article {
   padding-block: 10px;
 }
 
-#stories .coordinate {
+#stories .coordinate,
+#bookmark-list .coordinate {
   color: grey;
 }
 
@@ -287,7 +294,6 @@ h3 {
   background-color: rgb(165, 220, 255);
   font-size: medium;
 
-  /* margin-block: 15px; */
   padding: 10px;
   border-radius: 8px;
 
@@ -366,7 +372,6 @@ h3 {
 .new-form__documentations__outputs-item__delete-btn img {
   display: block;
   width: 100%;
-  /* height: 20%; */
 
   object-fit: cover;
   object-position: center;
@@ -461,7 +466,7 @@ h3 {
   background-color: lightskyblue;
 }
 
-footer {
+footer div {
   width: 100%;
   background-color: lightskyblue;
   text-align: center;

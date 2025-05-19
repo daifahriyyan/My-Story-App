@@ -10,7 +10,7 @@ export default class DetailStoryPage {
   async render() {
     return `
     <section id="story">
-      <h1>DETAIL STORY PAGE</h1>
+      <h1>DETAIL STORY PAGEasdasd</h1>
       <div class="detail-story-container">
         <div id="detail-story"></div>
         <h2>Lokasi </h2>
@@ -19,6 +19,7 @@ export default class DetailStoryPage {
         <a href="#/stories">
           <button>Back to Stories</button>
         </a>
+        <button id="add-bookmark">Add Bookmark</button>
       </div>
     </section>
     `
@@ -33,6 +34,7 @@ export default class DetailStoryPage {
     })
 
     await this.#presenter.getStoryDetail();
+    await this.#presenter.addBookmark();
   }
 
   showStory(item) {
