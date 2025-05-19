@@ -12,7 +12,7 @@ export default defineConfig({
   base: '/My-Story-App/',
   publicDir: resolve(__dirname, 'src', 'public'),
   build: {
-    outDir: resolve(__dirname, 'dist'),
+    outDir: resolve(__dirname, 'docs'),
     emptyOutDir: true,
     rollupOptions: {
       input: resolve(__dirname, 'src/index.html'),
