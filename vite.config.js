@@ -9,6 +9,7 @@ Pendaftaran service worker sudah dilakukan manual di kode aplikasi, jadi tidak p
 
 export default defineConfig({
   root: resolve(__dirname, 'src'),
+  base: '/My-Story-App/',
   publicDir: resolve(__dirname, 'src', 'public'),
   build: {
     outDir: resolve(__dirname, 'dist'),
