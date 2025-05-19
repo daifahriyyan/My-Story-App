@@ -10,37 +10,37 @@
   "theme_color": "lightskyblue",
   "icons": [
     {
-      "src": "./images/icons/logo-x144.png",
+      "src": "images/icons/logo-x144.png",
       "type": "image/png",
       "sizes": "144x144",
       "purpose": "any"
     },
     {
-      "src": "./images/icons/logo-x48.png",
+      "src": "images/icons/logo-x48.png",
       "type": "image/png",
       "sizes": "48x48",
       "purpose": "maskable"
     },
     {
-      "src": "./images/icons/logo-x96.png",
+      "src": "images/icons/logo-x96.png",
       "type": "image/png",
       "sizes": "96x96",
       "purpose": "maskable"
     },
     {
-      "src": "./images/icons/logo-x192.png",
+      "src": "images/icons/logo-x192.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "maskable"
     },
     {
-      "src": "./images/icons/logo-x384.png",
+      "src": "images/icons/logo-x384.png",
       "type": "image/png",
       "sizes": "384x384",
       "purpose": "maskable"
     },
     {
-      "src": "./images/icons/logo-x512.png",
+      "src": "images/icons/logo-x512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
@@ -48,49 +48,49 @@
   ],
   "screenshots": [
     {
-      "src": "./images/screenshots/mobile-1.png",
+      "src": "images/screenshots/mobile-1.png",
       "sizes": "371x601",
       "type": "image/png",
       "form_factor": "narrow"
     },
     {
-      "src": "./images/screenshots/mobile-2.png",
+      "src": "images/screenshots/mobile-2.png",
       "sizes": "374x604",
       "type": "image/png",
       "form_factor": "narrow"
     },
     {
-      "src": "./images/screenshots/mobile-3.png",
+      "src": "images/screenshots/mobile-3.png",
       "sizes": "372x603",
       "type": "image/png",
       "form_factor": "narrow"
     },
     {
-      "src": "./images/screenshots/mobile-4.png",
+      "src": "images/screenshots/mobile-4.png",
       "sizes": "373x603",
       "type": "image/png",
       "form_factor": "narrow"
     },
     {
-      "src": "./images/screenshots/desktop-1.png",
+      "src": "images/screenshots/desktop-1.png",
       "sizes": "1830x915",
       "type": "image/png",
       "form_factor": "wide"
     },
     {
-      "src": "./images/screenshots/desktop-2.png",
+      "src": "images/screenshots/desktop-2.png",
       "sizes": "1833x918",
       "type": "image/png",
       "form_factor": "wide"
     },
     {
-      "src": "./images/screenshots/desktop-3.png",
+      "src": "images/screenshots/desktop-3.png",
       "sizes": "1831x912",
       "type": "image/png",
       "form_factor": "wide"
     },
     {
-      "src": "./images/screenshots/desktop-4.png",
+      "src": "images/screenshots/desktop-4.png",
       "sizes": "1832x914",
       "type": "image/png",
       "form_factor": "wide"
@@ -104,7 +104,7 @@
       "url": "/?source=pwa#/add-story",
       "icons": [
         {
-          "src": "./images/icons/add-x512.png",
+          "src": "images/icons/add-x512.png",
           "type": "image/png",
           "sizes": "512x512"
         }
@@ -117,7 +117,7 @@
       "url": "/?source=pwa#/login",
       "icons": [
         {
-          "src": "./images/icons/login-x512.png",
+          "src": "images/icons/login-x512.png",
           "type": "image/png",
           "sizes": "512x512"
         }
