@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import { VitePWA } from 'vite-plugin-pwa';
 
 /*
 Service worker cukup diletakkan di folder public karena Vite otomatis menyalinnya ke dist. 
@@ -18,4 +19,16 @@ export default defineConfig({
       '@': resolve(__dirname, 'src'),
     },
   },
+  plugins: [
+    VitePWA({
+      registerType: 'autoUpdate',
+      strategies: 'injectManifest',
+      srcDir: '.',
+      filename: 'sw.js',
+      devOptions: {
+        enabled: true,
+        type: 'module'
+      },
+    }),
+  ],
 });
